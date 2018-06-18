@@ -5,19 +5,8 @@
 }
 
 body {
+  background: $light-grey;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background: $black;
-}
-
-body:after {
-  content: "";
-  background: url("../images/bg-pattern.svg") repeat;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
 }
 
 ul {
@@ -26,13 +15,14 @@ ul {
 // Typography
 
 a {
+  color: $black;
   text-decoration: none;
-  color: $white;
   font-weight: 400;
   transition: 0.5s all;
-  letter-spacing: .05rem;
+  letter-spacing: 0.02rem;
   outline: none;
 }
+
 a:visited {
   text-decoration: none;
   outline: none;
@@ -45,68 +35,261 @@ a:hover {
 // Headings
 
 h1 {
-  color: $white;
   font-weight: 500;
   font-size: 4.5rem;
-  letter-spacing: .02rem;
+  letter-spacing: 0.02rem;
 }
 
-.social {
-  flex-direction: row;
+h2 {
+  color: $text-dark;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.flex {
   display: flex;
 }
 
-.info a {
-  font-weight: 500;
+
+.user__name {
+  font-weight: 300;
 }
 
-.social li {
-  padding: 2em 0;
+.user__avatar {
+  height: 45px;
+  width: 45px;
+  margin: 0 1em 0 0;
+  background-image: url("../images/trump.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  border-radius: 100%;
 }
 
-.social a {
-  padding: 0 1em 0 0;
-  font-size: 1.6rem;
+.actions {
+  display: flex;
+  align-items: center;
 }
-// Header
+
+.actions a {
+  color: $white;
+}
 
 .header {
-  background: transparent;
-  padding: 0 50px;
+  background: $blue;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 15vh;
+  justify-content: center;
+  height: 70px;
   width: 100%;
 }
 
+.container {
+  width: 1180px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+
+}
+
+.nav__main {
+  display: flex;
+  justify-content: center;
+  background: $white;
+  width: 100%;
+  height: 64px;
+  border-bottom: 1px solid $border-grey;
+}
+
+.nav__main ul {
+  display: flex;
+}
+
+.nav__main li {
+  padding: 0 1em 0 0;
+}
+
+.nav__main li a {
+  font-weight: 300;
+  color: $text-light;
+}
+
+.btn {
+  font-size: 0.9rem;
+  background: $green;
+  padding: 10px 12px;
+  border-radius: 3px;
+  color: $white;
+  border: 1px solid $border-green;
+}
+
+.btn__pattern {
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url("../images/btn-pattern.svg");
+  background-position: center;
+  background-repeat: repeat-x;
+}
+
 .logo {
-  width: 50px;
-  height: 50px;
-  background-image: url("../images/logo-white.svg");
+  width: 100px;
+  height: 20px;
+  background-image: url("../images/coinbase.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   cursor: pointer;
   display: block;
+  text-indent: -9999px;
 }
 
-.container {
+
+// Dashboard
+
+.dashboard {
   display: flex;
   justify-content: center;
+  width: 100%;
+}
+
+.cards {
+  margin: 1.5em 0;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(12,1fr);
+  grid-template-areas:
+  "a a a a a a a a a a a a"
+  "b b b b b b c c c c c c";
+  grid-gap: 1.5em;
+}
+
+.card {
+  border: 1px solid $border-grey;
+  border-radius: 3px;
+  background: $white;
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  height: 85vh;
+  position: relative;
+}
+
+.individual::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 0px;
+  width: 150px;
+  height: 1px;
+  border-bottom: 1px solid $blue;
+}
+
+.price li {
+  padding: 0 1em 0 0;
+}
+
+.price li a {
+  color: $blue;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 54px;
+  border-bottom: 1px solid $border-grey;
+}
+
+.price__chart {
+  margin: 50px 0 125px 0;
+justify-content: space-around;
   padding: 0 50px;
 }
-@media screen and (max-width: 800px) {
-  h1 {
-    font-size: 2rem;
-    line-height: 3rem;
-  }
 
-  .social a {
-    font-size: 1rem;
-  }
+.price__col h2 {
 
+  padding: .5em 0;
+}
+
+.price__col span {
+  color: $text-light;
+}
+
+.price__col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid $border-grey;
+}
+
+.filter__time {
+  display: flex;
+  position: relative;
+}
+
+.filter__time a {
+  padding: 0 .3em;
+  color: $text-light;
+}
+
+.hightlight {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 0px;
+  width: 25%;
+  height: 1px;
+  border-bottom: 1px solid $green;
+}
+
+.last {
+  border-right: none;
+}
+
+.card__footer {
+  height: 40px;
+  border-top: 1px solid $border-grey;
+
+}
+
+.filter__axis-x {
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+span {
+  letter-spacing: .05rem;
+}
+
+.filter__axis-x a {
+  color: $text-light;
+}
+
+.overview {
+  height: 365px;
+  grid-area: a;
+}
+
+.portfolio {
+  height: 250px;
+  grid-area: b;
+}
+
+.activity {
+  height: 250px;
+  grid-area: c;
 }
